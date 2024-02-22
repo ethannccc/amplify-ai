@@ -1,6 +1,6 @@
 {
-  "name": "amplify-ai",
-  "displayName": "Amplify AI",
+  "name": "ai-mplify",
+  "displayName": "AI-mplify",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -14,8 +14,9 @@
   "contributes": {
     "commands": [
       {
-        "command": "amplify-ai.helloWorld",
-        "title": "Hello World"
+        "command": "ai-mplify.start",
+        "title": "Start a new chat",
+        "category": "AI-mplify"
       }
     ]
   },

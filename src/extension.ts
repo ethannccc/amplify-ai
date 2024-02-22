@@ -1,26 +1,48 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+import path from "path";
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+    let currentPanel: vscode.WebviewPanel | undefined = undefined;
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "amplify-ai" is now active!');
+  context.subscriptions.push(
+    vscode.commands.registerCommand("ai-mplify.start", () => {
+        const columnDisplayed = vscode.window.activeTextEditor?.viewColumn || undefined;
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('amplify-ai.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Yooo this is the extension');
-	});
-
-	context.subscriptions.push(disposable);
+    if (currentPanel) {
+        currentPanel.reveal(columnDisplayed);
+    } else {
+        currentPanel = vscode.window.createWebviewPanel(
+            "aiamplify",
+            "AI-mplify",
+            vscode.ViewColumn.One,
+            {
+              enableScripts: true,
+              localResourceRoots: [
+                vscode.Uri.file(path.join(context.extensionPath, "media")),
+              ],
+            }
+          );
+    }
+      currentPanel.webview.html = getWebviewContent();
+    })
+  );
 }
 
-// This method is called when your extension is deactivated
+function getWebviewContent() {
+  return /* html */ `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Amplify AI</title>
+		</head>
+
+		<body>
+			<h1>AI-mplify</h1>
+			<img src="https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg">
+		</body>
+		</html>`;
+}
+
 export function deactivate() {}
