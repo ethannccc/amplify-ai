@@ -11,6 +11,8 @@
 
 ## Get up and running straight away
 
+* Install [Node.js](https://nodejs.org/en) 
+* Run `npm install` - This will look at the package.json and install any module dependencies
 * Press `F5` to open a new window with your extension loaded.
 * Run your command from the command palette by pressing (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and typing `Hello World`.
 * Set breakpoints in your code inside `src/extension.ts` to debug your extension.
