@@ -1,6 +1,6 @@
 {
-  "name": "amplify-ai",
-  "displayName": "Amplify AI",
+  "name": "ai-mplify",
+  "displayName": "AI-mplify",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -12,10 +12,33 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
+    "menus": {
+      "webview/context": [
+        {
+          "command": "ai-mplify.newChat",
+          "when": "webviewID == 'AI-mplify'"
+        },
+        {
+          "command": "ai-mplify.close",
+          "when": "webviewID == 'AI-mplify'"
+        }
+      ]
+    },
     "commands": [
       {
-        "command": "amplify-ai.helloWorld",
-        "title": "Hello World"
+        "command": "ai-mplify.start",
+        "title": "Select an option",
+        "category": "AI-mplify"
+      },
+      {
+        "command": "ai-mplify.newChat",
+        "title": "Start a new chat",
+        "category": "AI-mplify"
+      },
+      {
+        "command": "ai-mplify.close",
+        "title": "Close AI-mplify",
+        "category": "AI-mplify"
       }
     ]
   },
