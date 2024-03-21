@@ -34,3 +34,5 @@ class chatgptAPI {
         }
     }
 }
+
+module.exports = chatgptAPI;

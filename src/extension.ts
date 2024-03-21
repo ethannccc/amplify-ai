@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import path from "path";
+const chatgptAPI =  require("#root/chatgptapi.js");
 
 export function activate(context: vscode.ExtensionContext) {
   let currentPanel: vscode.WebviewPanel | undefined = undefined;
